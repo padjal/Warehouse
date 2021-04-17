@@ -10,11 +10,28 @@ using System.Windows.Forms;
 
 namespace Warehouse
 {
-	public partial class Form1 : Form
+	public partial class Main : Form
 	{
-		public Form1()
+		public Main()
 		{
 			InitializeComponent();
+		}
+
+		private void newItemButton_Click(object sender, EventArgs e)
+		{
+			AddItem newItemForm = new AddItem();
+			newItemForm.Show();
+		}
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//TODO: Save warehouse
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//TODO: SAVE!
+			this.Close();
 		}
 	}
 }
