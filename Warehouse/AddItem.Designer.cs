@@ -39,19 +39,19 @@ namespace Warehouse
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.addItemImage = new System.Windows.Forms.Button();
-			this.itemImage = new System.Windows.Forms.PictureBox();
 			this.itemPriceUpDown = new System.Windows.Forms.NumericUpDown();
 			this.itemInStockUpDown = new System.Windows.Forms.NumericUpDown();
 			this.showDollarSign = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.itemImage)).BeginInit();
+			this.itemImage = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.itemPriceUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.itemInStockUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.itemImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
 			this.button1.Location = new System.Drawing.Point(148, 410);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(64, 31);
 			this.button1.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace Warehouse
 			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1.Location = new System.Drawing.Point(145, 44);
-			this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(525, 27);
 			this.textBox1.TabIndex = 1;
@@ -161,16 +161,6 @@ namespace Warehouse
 			this.addItemImage.Text = "Browse image";
 			this.addItemImage.UseVisualStyleBackColor = true;
 			// 
-			// itemImage
-			// 
-			this.itemImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.itemImage.Location = new System.Drawing.Point(379, 173);
-			this.itemImage.Name = "itemImage";
-			this.itemImage.Size = new System.Drawing.Size(291, 144);
-			this.itemImage.TabIndex = 12;
-			this.itemImage.TabStop = false;
-			// 
 			// itemPriceUpDown
 			// 
 			this.itemPriceUpDown.Location = new System.Drawing.Point(145, 323);
@@ -195,6 +185,16 @@ namespace Warehouse
 			this.showDollarSign.Text = "$";
 			this.showDollarSign.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// itemImage
+			// 
+			this.itemImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.itemImage.Location = new System.Drawing.Point(379, 173);
+			this.itemImage.Name = "itemImage";
+			this.itemImage.Size = new System.Drawing.Size(291, 144);
+			this.itemImage.TabIndex = 12;
+			this.itemImage.TabStop = false;
+			// 
 			// AddItem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -215,16 +215,17 @@ namespace Warehouse
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.button1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MinimumSize = new System.Drawing.Size(800, 550);
 			this.Name = "AddItem";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "New item";
 			this.Load += new System.EventHandler(this.AddItem_Load);
-			((System.ComponentModel.ISupportInitialize)(this.itemImage)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.itemPriceUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.itemInStockUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.itemImage)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
