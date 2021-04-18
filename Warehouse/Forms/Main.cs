@@ -23,8 +23,17 @@ namespace Warehouse
 
 		private void newItemButton_Click(object sender, EventArgs e)
 		{
-			AddItem newItemForm = new AddItem();
-			newItemForm.Show();
+			//Check if a category is selected.
+			if (treeView.SelectedNode == null)
+			{
+				string message = "Please select a category first";
+				string caption = "Attention!";
+				MessageBox.Show(message,caption, MessageBoxButtons.OK);
+				return;
+			}
+				AddItem newItemForm = new AddItem();
+				newItemForm.Category = (Category)treeView.SelectedNode.Tag;
+				newItemForm.Show();
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,6 +60,7 @@ namespace Warehouse
 			//InitializeTreeView();
 		}
 
+		#region Manage Categories
 		/// <summary>
 		/// Adds a new category to the TreeView.
 		/// </summary>
@@ -85,6 +95,11 @@ namespace Warehouse
 			}
 		}
 
+		/// <summary>
+		/// Edits a category.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void editCategoryButton_Click(object sender, EventArgs e)
 		{
 			if (treeView.SelectedNode != null)
@@ -99,11 +114,17 @@ namespace Warehouse
 					cat.Name = newCategory.Name;
 				}
 			}
-
+			//TODO: Edit all products.
 		}
 
+		/// <summary>
+		/// Removes a category.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void deleteCategoryButton_Click(object sender, EventArgs e)
 		{
+			//TODO: Check if empty
 			if (treeView.SelectedNode != null)
 			{
 				var cat = treeView.SelectedNode.Tag as Category;
@@ -117,29 +138,19 @@ namespace Warehouse
 				treeView.SelectedNode.Remove();
 			}
 		}
-	}
 
-	/// <summary>
-	/// Redraws the treeview with updated info.
-	/// </summary>
-	/*public void InitializeTreeView()
-	{
-		treeView.Nodes.Clear();
-		if (CurrentWarehouse.Categories.Count != 0)
+		private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			treeView.BeginUpdate();
-			for (int i = 0; i < CurrentWarehouse.Categories.Count; i++)
-			{
-				//DisplayCategoryContent(CurrentWarehouse.Categories[i], 
-				new TreeNode(CurrentWarehouse.Categories[i].Name);
-
-				var newNode = new TreeNode();
-				treeView.Nodes.Add(newNode);
+			//TODO: Handle products display change.
+			if (treeView.SelectedNode != null) {
+				var cat = treeView.SelectedNode.Tag as Category;
+				dataGridView.DataSource = cat.Bind();
 			}
-
-			treeView.EndUpdate();
 		}
-	}*/
+		#endregion
+
+		//End of class
+	}
 }
 
 

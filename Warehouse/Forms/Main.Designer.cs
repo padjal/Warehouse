@@ -62,17 +62,20 @@ namespace Warehouse
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.treeView = new System.Windows.Forms.TreeView();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridView = new System.Windows.Forms.DataGridView();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+			this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.categoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.inStockColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.imageColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -363,10 +366,11 @@ namespace Warehouse
 			this.treeView.Name = "treeView";
 			this.treeView.Size = new System.Drawing.Size(236, 582);
 			this.treeView.TabIndex = 0;
+			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
 			// 
 			// panel3
 			// 
-			this.panel3.Controls.Add(this.dataGridView1);
+			this.panel3.Controls.Add(this.dataGridView);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel3.Location = new System.Drawing.Point(236, 109);
@@ -374,47 +378,78 @@ namespace Warehouse
 			this.panel3.Size = new System.Drawing.Size(853, 582);
 			this.panel3.TabIndex = 2;
 			// 
-			// dataGridView1
+			// dataGridView
 			// 
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowHeadersWidth = 51;
-			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(853, 582);
-			this.dataGridView1.TabIndex = 0;
+			this.dataGridView.AllowUserToAddRows = false;
+			this.dataGridView.AllowUserToDeleteRows = false;
+			this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
+            this.nameColumn,
+            this.descriptionColumn,
+            this.categoryColumn,
+            this.priceColumn,
+            this.inStockColumn,
+            this.imageColumn});
+			this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView.Location = new System.Drawing.Point(0, 0);
+			this.dataGridView.Name = "dataGridView";
+			this.dataGridView.ReadOnly = true;
+			this.dataGridView.RowHeadersWidth = 51;
+			this.dataGridView.RowTemplate.Height = 24;
+			this.dataGridView.Size = new System.Drawing.Size(853, 582);
+			this.dataGridView.TabIndex = 0;
 			// 
-			// Column1
+			// idColumn
 			// 
-			this.Column1.HeaderText = "Column1";
-			this.Column1.MinimumWidth = 6;
-			this.Column1.Name = "Column1";
+			this.idColumn.HeaderText = "ID";
+			this.idColumn.MinimumWidth = 6;
+			this.idColumn.Name = "idColumn";
+			this.idColumn.ReadOnly = true;
 			// 
-			// Column2
+			// nameColumn
 			// 
-			this.Column2.HeaderText = "Column2";
-			this.Column2.MinimumWidth = 6;
-			this.Column2.Name = "Column2";
+			this.nameColumn.HeaderText = "Name";
+			this.nameColumn.MinimumWidth = 6;
+			this.nameColumn.Name = "nameColumn";
+			this.nameColumn.ReadOnly = true;
 			// 
-			// Column3
+			// descriptionColumn
 			// 
-			this.Column3.HeaderText = "Column3";
-			this.Column3.MinimumWidth = 6;
-			this.Column3.Name = "Column3";
+			this.descriptionColumn.HeaderText = "Description";
+			this.descriptionColumn.MinimumWidth = 6;
+			this.descriptionColumn.Name = "descriptionColumn";
+			this.descriptionColumn.ReadOnly = true;
 			// 
-			// Column4
+			// categoryColumn
 			// 
-			this.Column4.HeaderText = "Column4";
-			this.Column4.MinimumWidth = 6;
-			this.Column4.Name = "Column4";
+			this.categoryColumn.HeaderText = "Category";
+			this.categoryColumn.MinimumWidth = 6;
+			this.categoryColumn.Name = "categoryColumn";
+			this.categoryColumn.ReadOnly = true;
+			// 
+			// priceColumn
+			// 
+			this.priceColumn.HeaderText = "Price";
+			this.priceColumn.MinimumWidth = 6;
+			this.priceColumn.Name = "priceColumn";
+			this.priceColumn.ReadOnly = true;
+			// 
+			// inStockColumn
+			// 
+			this.inStockColumn.HeaderText = "In stock";
+			this.inStockColumn.MinimumWidth = 6;
+			this.inStockColumn.Name = "inStockColumn";
+			this.inStockColumn.ReadOnly = true;
+			// 
+			// imageColumn
+			// 
+			this.imageColumn.HeaderText = "Image";
+			this.imageColumn.MinimumWidth = 6;
+			this.imageColumn.Name = "imageColumn";
+			this.imageColumn.ReadOnly = true;
 			// 
 			// Main
 			// 
@@ -441,7 +476,7 @@ namespace Warehouse
 			this.menuStrip1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -453,14 +488,10 @@ namespace Warehouse
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.TreeView treeView;
 		private System.Windows.Forms.Button newItemButton;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dataGridView;
 		private System.Windows.Forms.Button addCategoryButton;
 		private System.Windows.Forms.Button editCategoryButton;
 		private System.Windows.Forms.Button deleteCategoryButton;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button4;
@@ -486,6 +517,13 @@ namespace Warehouse
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn categoryColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn inStockColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn imageColumn;
 	}
 }
 

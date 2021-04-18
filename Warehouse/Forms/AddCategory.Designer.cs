@@ -29,6 +29,7 @@ namespace Warehouse
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCategory));
 			this.newCategoryNameLabel = new System.Windows.Forms.Label();
 			this.newCategoryName = new System.Windows.Forms.TextBox();
 			this.addCategoryButton = new System.Windows.Forms.Button();
@@ -83,8 +84,10 @@ namespace Warehouse
 			this.Controls.Add(this.addCategoryButton);
 			this.Controls.Add(this.newCategoryName);
 			this.Controls.Add(this.newCategoryNameLabel);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(400, 200);
 			this.Name = "AddCategory";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "AddCategory";
 			this.Load += new System.EventHandler(this.AddCategory_Load);

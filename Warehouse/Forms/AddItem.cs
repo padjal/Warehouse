@@ -12,6 +12,8 @@ namespace Warehouse
 {
 	public partial class AddItem : Form
 	{
+		internal Category Category { get; set; }
+
 		public AddItem()
 		{
 			InitializeComponent();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Warehouse
 {
@@ -22,6 +23,16 @@ namespace Warehouse
 		}
 		public Category(string name) {
 			Name = name;
+		}
+
+		public BindingSource Bind() {
+			var bindsrc = new BindingSource();
+
+			foreach (var pr in Products) {
+				bindsrc.Add(pr);
+			}
+
+			return bindsrc;
 		}
 	}
 }
