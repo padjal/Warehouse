@@ -176,7 +176,43 @@
   <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>152, 17</value>
   </metadata>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAD///8A////AAAAAAD29vYZ9vb2fvb29sb29vbq9vb2/fb29v329vbq9vb2xvb29n729vYZAAAAAP//
+        /wD///8A////AP///wD29vZD9fPv8u7Tm//ouVj/5Kgt/+KiHf/ioh3/5Kgt/+i5WP/u05v/9fPv8vb2
+        9kP///8A////AP///wD///8A9vb23+e3Vf/ioRv/4qEb/+KhG//ioRv/4qEb/+KhG//ioRv/4qEb/+e3
+        Vf/29vbf////AP///wD///8A////APb29v/ioRv/4qEb/+KhG//ioRv/4qEb/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/9vb2/////wD///8A////AP///wD29vb/4qEb/+KhG//ioRv/4qEb/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/4qEb//b29v////8A////AP///wD///8A9vb2/+KhG//ioRv/4qEb/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//29vb/////AP///wD///8A////APb29v/ioRv/4qEb/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//ioRv/9vb2/////wD///8A////AP///wD29vb/4qEb/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//ioRv/4qEb//b29v////8A////AP///wD///8A9vb2/+KhG//ioRv/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//ioRv/4qEb/+KhG//29vb/////AP///wD///8A////APb29v/ioRv/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//ioRv/4qEb/+KhG//ioRv/9vb2/////wD///8A////AP///wD29vb/4qEb/+Kh
+        G//ioRv/4qEb/+KhG//ioRv/4qEb/+KhG//ioRv/4qEb//b29v////8A////AP///wD///8A9vb2/+Kh
+        G//ioRv/5Ks1/+i9ZP/qw3b/6sN2/+i9ZP/kqzX/4qEb/+KhG//29vb/////AP///wD///8A////APb2
+        9v/ioRv/7NWl//Hv8P/x7/D/8e/w//Hv8P/x7/D/8e/w/+zVpf/ioRv/9vb2/////wD///8A////AP//
+        /wD29vbf57dV/+ayRv/s06D/7+PP//Dp3//w6d//7+PP/+zToP/mskb/57dV//b29t////8A////AP//
+        /wD///8A9vb2Q/Xz7/Lu05v/6LlY/+SoLf/ioh3/4qId/+SoLf/ouVj/7tOb//Xz7/L29vZD////AP//
+        /wD///8A////AAAAAAD29vYZ9vb2fvb29sb29vbq9vb2/fb29v329vbq9vb2xvb29n729vYZAAAAAP//
+        /wD///8A4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMAD
+        AADAAwAA4AcAAA==
+</value>
+  </data>
 </root>

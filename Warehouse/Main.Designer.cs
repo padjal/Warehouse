@@ -34,8 +34,8 @@ namespace Warehouse
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.deleteCategoryButton = new System.Windows.Forms.Button();
+			this.editCategoryButton = new System.Windows.Forms.Button();
 			this.newItemButton = new System.Windows.Forms.Button();
 			this.addCategoryButton = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -44,7 +44,6 @@ namespace Warehouse
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.exportCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -82,8 +81,8 @@ namespace Warehouse
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.button4);
-			this.panel1.Controls.Add(this.button2);
-			this.panel1.Controls.Add(this.button3);
+			this.panel1.Controls.Add(this.deleteCategoryButton);
+			this.panel1.Controls.Add(this.editCategoryButton);
 			this.panel1.Controls.Add(this.newItemButton);
 			this.panel1.Controls.Add(this.addCategoryButton);
 			this.panel1.Controls.Add(this.menuStrip1);
@@ -127,23 +126,33 @@ namespace Warehouse
 			this.button4.Text = "Edit";
 			this.button4.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// deleteCategoryButton
 			// 
-			this.button2.Location = new System.Drawing.Point(161, 67);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 36);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "delete";
-			this.button2.UseVisualStyleBackColor = true;
+			this.deleteCategoryButton.BackColor = System.Drawing.Color.Silver;
+			this.deleteCategoryButton.FlatAppearance.BorderSize = 0;
+			this.deleteCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.deleteCategoryButton.ForeColor = System.Drawing.Color.Black;
+			this.deleteCategoryButton.Location = new System.Drawing.Point(161, 67);
+			this.deleteCategoryButton.Name = "deleteCategoryButton";
+			this.deleteCategoryButton.Size = new System.Drawing.Size(75, 36);
+			this.deleteCategoryButton.TabIndex = 1;
+			this.deleteCategoryButton.Text = "&Delete";
+			this.deleteCategoryButton.UseVisualStyleBackColor = false;
+			this.deleteCategoryButton.Click += new System.EventHandler(this.deleteCategoryButton_Click);
 			// 
-			// button3
+			// editCategoryButton
 			// 
-			this.button3.Location = new System.Drawing.Point(80, 67);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 36);
-			this.button3.TabIndex = 2;
-			this.button3.Text = "edit";
-			this.button3.UseVisualStyleBackColor = true;
+			this.editCategoryButton.BackColor = System.Drawing.Color.Silver;
+			this.editCategoryButton.FlatAppearance.BorderSize = 0;
+			this.editCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.editCategoryButton.ForeColor = System.Drawing.Color.Black;
+			this.editCategoryButton.Location = new System.Drawing.Point(80, 67);
+			this.editCategoryButton.Name = "editCategoryButton";
+			this.editCategoryButton.Size = new System.Drawing.Size(75, 36);
+			this.editCategoryButton.TabIndex = 2;
+			this.editCategoryButton.Text = "&Edit";
+			this.editCategoryButton.UseVisualStyleBackColor = false;
+			this.editCategoryButton.Click += new System.EventHandler(this.editCategoryButton_Click);
 			// 
 			// newItemButton
 			// 
@@ -159,12 +168,16 @@ namespace Warehouse
 			// 
 			// addCategoryButton
 			// 
+			this.addCategoryButton.BackColor = System.Drawing.Color.Silver;
+			this.addCategoryButton.FlatAppearance.BorderSize = 0;
+			this.addCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.addCategoryButton.ForeColor = System.Drawing.Color.Black;
 			this.addCategoryButton.Location = new System.Drawing.Point(0, 67);
 			this.addCategoryButton.Name = "addCategoryButton";
 			this.addCategoryButton.Size = new System.Drawing.Size(75, 36);
 			this.addCategoryButton.TabIndex = 0;
-			this.addCategoryButton.Text = "new";
-			this.addCategoryButton.UseVisualStyleBackColor = true;
+			this.addCategoryButton.Text = "&New";
+			this.addCategoryButton.UseVisualStyleBackColor = false;
 			this.addCategoryButton.Click += new System.EventHandler(this.addCategoryButton_Click);
 			// 
 			// menuStrip1
@@ -188,7 +201,6 @@ namespace Warehouse
             this.openToolStripMenuItem,
             this.toolStripSeparator,
             this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
             this.toolStripSeparator1,
             this.exportCSVToolStripMenuItem,
             this.toolStripSeparator2,
@@ -203,7 +215,7 @@ namespace Warehouse
 			this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.newToolStripMenuItem.Text = "&New";
 			// 
 			// openToolStripMenuItem
@@ -212,13 +224,13 @@ namespace Warehouse
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -226,20 +238,14 @@ namespace Warehouse
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-			// 
-			// saveAsToolStripMenuItem
-			// 
-			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
-			this.saveAsToolStripMenuItem.Text = "Save &As";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
 			// 
 			// exportCSVToolStripMenuItem
 			// 
@@ -247,18 +253,18 @@ namespace Warehouse
 			this.exportCSVToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
 			this.exportCSVToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.exportCSVToolStripMenuItem.Text = "&Export CSV";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -314,30 +320,30 @@ namespace Warehouse
 			// contentsToolStripMenuItem
 			// 
 			this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.contentsToolStripMenuItem.Text = "&Contents";
 			// 
 			// indexToolStripMenuItem
 			// 
 			this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-			this.indexToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+			this.indexToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.indexToolStripMenuItem.Text = "&Index";
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.searchToolStripMenuItem.Text = "&Search";
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(147, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(221, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.aboutToolStripMenuItem.Text = "&About...";
 			// 
 			// panel2
@@ -422,6 +428,7 @@ namespace Warehouse
 			this.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(138)))), ((int)(((byte)(191)))));
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.MinimumSize = new System.Drawing.Size(850, 550);
 			this.Name = "Main";
@@ -448,8 +455,8 @@ namespace Warehouse
 		private System.Windows.Forms.Button newItemButton;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Button addCategoryButton;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button editCategoryButton;
+		private System.Windows.Forms.Button deleteCategoryButton;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -463,7 +470,6 @@ namespace Warehouse
 		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem exportCSVToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

@@ -75,6 +75,7 @@ namespace Warehouse
 			// 
 			// AddCategory
 			// 
+			this.AcceptButton = this.addCategoryButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(382, 167);
@@ -86,6 +87,7 @@ namespace Warehouse
 			this.Name = "AddCategory";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "AddCategory";
+			this.Load += new System.EventHandler(this.AddCategory_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

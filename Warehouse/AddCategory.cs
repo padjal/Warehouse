@@ -33,5 +33,13 @@ namespace Warehouse
 			DialogResult = DialogResult.OK;
 			this.Close();
 		}
+
+		private void AddCategory_Load(object sender, EventArgs e)
+		{
+			if (Name == "AddCategory")
+				Name = string.Empty;
+			newCategoryName.Text = Name;
+			newCategoryName.AcceptsReturn = true;
+		}
 	}
 }

@@ -69,7 +69,8 @@ namespace Warehouse
 				//Check if category exist
 
 				//If this is a top-level category
-				if (treeView.SelectedNode == null) {
+				if (treeView.SelectedNode == null)
+				{
 					CurrentWarehouse.Categories.Add(cat);
 					treeView.Nodes.Add(newNode);
 					return;
@@ -84,27 +85,61 @@ namespace Warehouse
 			}
 		}
 
-		/// <summary>
-		/// Redraws the treeview with updated info.
-		/// </summary>
-		/*public void InitializeTreeView()
+		private void editCategoryButton_Click(object sender, EventArgs e)
 		{
-			treeView.Nodes.Clear();
-			if (CurrentWarehouse.Categories.Count != 0)
+			if (treeView.SelectedNode != null)
 			{
-				treeView.BeginUpdate();
-				for (int i = 0; i < CurrentWarehouse.Categories.Count; i++)
+				AddCategory newCategory = new AddCategory();
+				newCategory.Name = treeView.SelectedNode.Text;
+				newCategory.ShowDialog();
+				if (newCategory.DialogResult == DialogResult.OK)
 				{
-					//DisplayCategoryContent(CurrentWarehouse.Categories[i], 
-					new TreeNode(CurrentWarehouse.Categories[i].Name);
-
-					var newNode = new TreeNode();
-					treeView.Nodes.Add(newNode);
+					treeView.SelectedNode.Text = newCategory.Name;
+					var cat = treeView.SelectedNode.Tag as Category;
+					cat.Name = newCategory.Name;
 				}
-
-				treeView.EndUpdate();
 			}
-		}*/
+
+		}
+
+		private void deleteCategoryButton_Click(object sender, EventArgs e)
+		{
+			if (treeView.SelectedNode != null)
+			{
+				var cat = treeView.SelectedNode.Tag as Category;
+				//It is a first-level category
+				if (treeView.Parent == null)
+				{
+					CurrentWarehouse.Categories.
+						Remove(CurrentWarehouse.Categories.
+							Find(x => x.Name == treeView.SelectedNode.Text));
+				}
+				treeView.SelectedNode.Remove();
+			}
+		}
 	}
+
+	/// <summary>
+	/// Redraws the treeview with updated info.
+	/// </summary>
+	/*public void InitializeTreeView()
+	{
+		treeView.Nodes.Clear();
+		if (CurrentWarehouse.Categories.Count != 0)
+		{
+			treeView.BeginUpdate();
+			for (int i = 0; i < CurrentWarehouse.Categories.Count; i++)
+			{
+				//DisplayCategoryContent(CurrentWarehouse.Categories[i], 
+				new TreeNode(CurrentWarehouse.Categories[i].Name);
+
+				var newNode = new TreeNode();
+				treeView.Nodes.Add(newNode);
+			}
+
+			treeView.EndUpdate();
+		}
+	}*/
 }
+
 
