@@ -166,12 +166,29 @@ namespace Warehouse
 			{
 				var cat = treeView.SelectedNode.Tag as Category;
 				//It is a first-level category
-				if (treeView.Parent == null)
+				if (treeView.SelectedNode.Parent == null)
 				{
 					CurrentWarehouse.Categories.
 						Remove(CurrentWarehouse.Categories.
 							Find(x => x.Name == treeView.SelectedNode.Text));
+					foreach (var pr in cat.Products) {
+						CurrentWarehouse.Products.Remove(
+							CurrentWarehouse.Products.Find(x => x.Name == pr.Name));
+					}
 				}
+				else {
+					var parentCat = treeView.SelectedNode.Parent.Tag as Category;
+					parentCat.SubCategories.
+						Remove(CurrentWarehouse.Categories.
+							Find(x => x.Name == treeView.SelectedNode.Text));
+					foreach (var pr in cat.Products)
+					{
+						CurrentWarehouse.Products.Remove(
+							CurrentWarehouse.Products.Find(x => x.Name == pr.Name));
+					}
+					
+				}
+				dataGridView.Refresh();
 				treeView.SelectedNode.Remove();
 			}
 		}
