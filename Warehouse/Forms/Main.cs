@@ -15,8 +15,12 @@ namespace Warehouse
 {
 	public partial class Main : Form
 	{
-
+		int _minStock = 10;
 		Warehouse CurrentWarehouse { get; set; }
+		public int MinStock {
+			get => _minStock;
+			set => _minStock = value;
+		}
 		//Might not need it.
 		Category SelectedCategory { get; set; }
 
@@ -249,7 +253,18 @@ namespace Warehouse
 
 		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			CurrentWarehouse.ExportCSVReport(10);
+			//TODO: Implement settings form.
+			CurrentWarehouse.ExportCSVReport(MinStock);
+		}
+
+		private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var settings = new Settings();
+			settings.MinStock = MinStock;
+			settings.ShowDialog();
+			if (settings.DialogResult == DialogResult.OK) {
+				MinStock = settings.MinStock;
+			}
 		}
 
 		//End of class

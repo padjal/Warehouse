@@ -30,8 +30,9 @@ namespace Warehouse
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+			this.changeButton = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -43,25 +44,37 @@ namespace Warehouse
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Re-stock under:";
 			// 
-			// numericUpDown1
+			// numericUpDown
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(194, 60);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(59, 22);
-			this.numericUpDown1.TabIndex = 1;
+			this.numericUpDown.Location = new System.Drawing.Point(194, 60);
+			this.numericUpDown.Name = "numericUpDown";
+			this.numericUpDown.Size = new System.Drawing.Size(59, 22);
+			this.numericUpDown.TabIndex = 1;
+			// 
+			// changeButton
+			// 
+			this.changeButton.Location = new System.Drawing.Point(129, 113);
+			this.changeButton.Name = "changeButton";
+			this.changeButton.Size = new System.Drawing.Size(94, 32);
+			this.changeButton.TabIndex = 2;
+			this.changeButton.Text = "Change";
+			this.changeButton.UseVisualStyleBackColor = true;
+			this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
 			// 
 			// Settings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(382, 203);
-			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.changeButton);
+			this.Controls.Add(this.numericUpDown);
 			this.Controls.Add(this.label1);
 			this.MinimumSize = new System.Drawing.Size(400, 250);
 			this.Name = "Settings";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Settings";
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			this.Load += new System.EventHandler(this.Settings_Load);
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -70,6 +83,7 @@ namespace Warehouse
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown numericUpDown;
+		private System.Windows.Forms.Button changeButton;
 	}
 }
