@@ -167,6 +167,33 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <metadata name="notification.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>152, 17</value>
+  </metadata>
+  <data name="notification.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////yf///83/////////////////////////////////////////////
+        ////////////MwAAAAD///8A////AP////////9n////////////////////////////////////////
+        /////////////////5kAAAAA////AP///wD/////////Df////P/////////////////////////////
+        ///////////////////////y////DP///wD///8A/////wAAAAD///+a////////////////////////
+        /////////////////////////////////2b///8A////AP////8AAAAA////M///////////////////
+        ///////////////////////////////////////M////AP///wD/////AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////AAAAAP///wD///8A/////wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////wAAAAD///8A////AP////8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////8AAAAA////AP///wD/////AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA////QP/////////////////////////DAAAAAP///wD///8A/////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///8D///9AAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP//
+        /8H////////////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A//8AAP//AAD//wAAgAMAAIADAACAAQAAoAEAAKABAAC/+wAAv/sAAL/7AAC/AwAAvz8AAIB/
+        AAD//wAA//8AAA==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA

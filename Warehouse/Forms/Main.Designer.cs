@@ -29,6 +29,7 @@ namespace Warehouse
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace Warehouse
 			this.treeView = new System.Windows.Forms.TreeView();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
+			this.notification = new System.Windows.Forms.NotifyIcon(this.components);
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -219,13 +221,13 @@ namespace Warehouse
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -233,14 +235,14 @@ namespace Warehouse
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
 			// 
 			// exportCSVToolStripMenuItem
 			// 
@@ -248,18 +250,18 @@ namespace Warehouse
 			this.exportCSVToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
 			this.exportCSVToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.exportCSVToolStripMenuItem.Text = "&Export CSV";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -388,6 +390,14 @@ namespace Warehouse
 			this.dataGridView.Size = new System.Drawing.Size(853, 582);
 			this.dataGridView.TabIndex = 0;
 			// 
+			// notification
+			// 
+			this.notification.BalloonTipText = "You have successfully saved your work.";
+			this.notification.BalloonTipTitle = "Notification";
+			this.notification.Icon = ((System.Drawing.Icon)(resources.GetObject("notification.Icon")));
+			this.notification.Text = "Notification";
+			this.notification.Visible = true;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -454,6 +464,7 @@ namespace Warehouse
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
+		private System.Windows.Forms.NotifyIcon notification;
 	}
 }
 

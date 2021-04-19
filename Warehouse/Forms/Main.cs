@@ -57,6 +57,8 @@ namespace Warehouse
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			CurrentWarehouse.ExportJson();
+			notification.Text = "You have successfuly saved your warehouse. You may exit now.";
+			notification.ShowBalloonTip(1000);
 		}
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
