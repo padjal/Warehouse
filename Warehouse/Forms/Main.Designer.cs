@@ -63,14 +63,6 @@ namespace Warehouse
 			this.treeView = new System.Windows.Forms.TreeView();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.categoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.inStockColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.imageColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -195,7 +187,7 @@ namespace Warehouse
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1089, 28);
 			this.menuStrip1.TabIndex = 6;
-			this.menuStrip1.Text = "menuStrip1";
+			this.menuStrip1.Text = "menuStrip";
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -323,30 +315,30 @@ namespace Warehouse
 			// contentsToolStripMenuItem
 			// 
 			this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
 			this.contentsToolStripMenuItem.Text = "&Contents";
 			// 
 			// indexToolStripMenuItem
 			// 
 			this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-			this.indexToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.indexToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
 			this.indexToolStripMenuItem.Text = "&Index";
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
 			this.searchToolStripMenuItem.Text = "&Search";
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(147, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
 			this.aboutToolStripMenuItem.Text = "&About...";
 			// 
 			// panel2
@@ -367,6 +359,8 @@ namespace Warehouse
 			this.treeView.Size = new System.Drawing.Size(236, 582);
 			this.treeView.TabIndex = 0;
 			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+			this.treeView.Click += new System.EventHandler(this.treeView_Click);
+			this.treeView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseClick);
 			// 
 			// panel3
 			// 
@@ -385,14 +379,6 @@ namespace Warehouse
 			this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idColumn,
-            this.nameColumn,
-            this.descriptionColumn,
-            this.categoryColumn,
-            this.priceColumn,
-            this.inStockColumn,
-            this.imageColumn});
 			this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView.Location = new System.Drawing.Point(0, 0);
 			this.dataGridView.Name = "dataGridView";
@@ -401,55 +387,6 @@ namespace Warehouse
 			this.dataGridView.RowTemplate.Height = 24;
 			this.dataGridView.Size = new System.Drawing.Size(853, 582);
 			this.dataGridView.TabIndex = 0;
-			// 
-			// idColumn
-			// 
-			this.idColumn.HeaderText = "ID";
-			this.idColumn.MinimumWidth = 6;
-			this.idColumn.Name = "idColumn";
-			this.idColumn.ReadOnly = true;
-			// 
-			// nameColumn
-			// 
-			this.nameColumn.HeaderText = "Name";
-			this.nameColumn.MinimumWidth = 6;
-			this.nameColumn.Name = "nameColumn";
-			this.nameColumn.ReadOnly = true;
-			// 
-			// descriptionColumn
-			// 
-			this.descriptionColumn.HeaderText = "Description";
-			this.descriptionColumn.MinimumWidth = 6;
-			this.descriptionColumn.Name = "descriptionColumn";
-			this.descriptionColumn.ReadOnly = true;
-			// 
-			// categoryColumn
-			// 
-			this.categoryColumn.HeaderText = "Category";
-			this.categoryColumn.MinimumWidth = 6;
-			this.categoryColumn.Name = "categoryColumn";
-			this.categoryColumn.ReadOnly = true;
-			// 
-			// priceColumn
-			// 
-			this.priceColumn.HeaderText = "Price";
-			this.priceColumn.MinimumWidth = 6;
-			this.priceColumn.Name = "priceColumn";
-			this.priceColumn.ReadOnly = true;
-			// 
-			// inStockColumn
-			// 
-			this.inStockColumn.HeaderText = "In stock";
-			this.inStockColumn.MinimumWidth = 6;
-			this.inStockColumn.Name = "inStockColumn";
-			this.inStockColumn.ReadOnly = true;
-			// 
-			// imageColumn
-			// 
-			this.imageColumn.HeaderText = "Image";
-			this.imageColumn.MinimumWidth = 6;
-			this.imageColumn.Name = "imageColumn";
-			this.imageColumn.ReadOnly = true;
 			// 
 			// Main
 			// 
@@ -516,14 +453,6 @@ namespace Warehouse
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
-		private System.ComponentModel.BackgroundWorker backgroundWorker1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn categoryColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn inStockColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn imageColumn;
 	}
 }
 

@@ -26,6 +26,7 @@ namespace Warehouse
 		}
 
 		public BindingSource Bind() {
+			
 			var bindsrc = new BindingSource();
 
 			foreach (var pr in Products) {

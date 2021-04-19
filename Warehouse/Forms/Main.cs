@@ -31,9 +31,18 @@ namespace Warehouse
 				MessageBox.Show(message,caption, MessageBoxButtons.OK);
 				return;
 			}
-				AddItem newItemForm = new AddItem();
-				newItemForm.Category = (Category)treeView.SelectedNode.Tag;
-				newItemForm.Show();
+			
+			AddItem newItemForm = new AddItem();
+			var cat = treeView.SelectedNode.Tag as Category;
+			newItemForm.Category = cat;
+			newItemForm.ShowDialog();
+			if (newItemForm.DialogResult == DialogResult.OK) {
+				cat.Products.Add(newItemForm.Product);
+				dataGridView.DataSource = cat.Bind();
+				CurrentWarehouse.Products.Add(newItemForm.Product);
+			}
+			
+				
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,10 +156,18 @@ namespace Warehouse
 				dataGridView.DataSource = cat.Bind();
 			}
 		}
+
+		private void treeView_Click(object sender, EventArgs e)
+		{
+		}
+
+		private void treeView_MouseClick(object sender, MouseEventArgs e)
+		{
+			//TODO: Figure out how to deselect a node!
+			treeView.SelectedNode = null;
+		}
 		#endregion
 
 		//End of class
 	}
 }
-
-
