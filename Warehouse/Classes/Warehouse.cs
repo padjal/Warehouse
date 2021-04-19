@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace Warehouse
@@ -30,6 +31,20 @@ namespace Warehouse
 			{
 				sw.Write(JsonSerializer.Serialize(Products));
 			}
+		}
+
+		public void ExportCSVReport(int minInStock) {
+			var sb = new StringBuilder();
+			sb.AppendLine("Name, Id, Description, Price, Stock, Category");
+			foreach (var pr in _products) { 
+				if(pr.Stock<=minInStock)
+					sb.AppendLine(pr.ToString());
+			}
+
+			using (var sr = new StreamWriter(File.Create("report.csv"))) {
+				sr.Write(sb);
+			}
+				
 		}
 
 	}

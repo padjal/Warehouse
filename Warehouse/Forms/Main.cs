@@ -247,6 +247,11 @@ namespace Warehouse
 			}
 		}
 
+		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CurrentWarehouse.ExportCSVReport(10);
+		}
+
 		//End of class
 	}
 }

@@ -8,8 +8,8 @@ namespace Warehouse
 {
 	class Product
 	{
-		public string Name { get; set; }
 		public string Id { get; set; }
+		public string Name { get; set; }
 		public string Description { get; set; }
 		public double Price { get; set; }
 		public int Stock { get; set; }
@@ -24,6 +24,11 @@ namespace Warehouse
 			Price = price;
 			Stock = stock;
 			Category = category;
+		}
+
+		public override string ToString()
+		{
+			return $"{Name},{Id},{Description},{Price},{Stock},{Category}";
 		}
 	}
 }
