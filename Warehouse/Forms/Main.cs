@@ -17,18 +17,23 @@ namespace Warehouse
 	{
 		int _minStock = 10;
 		Warehouse CurrentWarehouse { get; set; }
-		public int MinStock {
+		public int MinStock
+		{
 			get => _minStock;
 			set => _minStock = value;
 		}
-		//Might not need it.
-		Category SelectedCategory { get; set; }
+	
 
 		public Main()
 		{
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Add a new item to the warehouse. Opens a new window.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void newItemButton_Click(object sender, EventArgs e)
 		{
 			//Check if a category is selected.
@@ -62,6 +67,11 @@ namespace Warehouse
 
 		}
 
+		/// <summary>
+		/// Save progres. Json serialization is used.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			CurrentWarehouse.ExportJson();
@@ -69,21 +79,19 @@ namespace Warehouse
 			notification.ShowBalloonTip(1000);
 		}
 
+		/// <summary>
+		/// Exit the app. Save beforehand.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			CurrentWarehouse.ExportJson();
 			this.Close();
 		}
 
-		private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
-		{
-			Settings settings = new Settings();
-			settings.Show();
-		}
-
 		private void Main_Load(object sender, EventArgs e)
 		{
-			//TODO: Check if file exist!
 			CurrentWarehouse = new Warehouse();
 			using (var sw = new StreamReader("categories.json"))
 			{
@@ -151,7 +159,6 @@ namespace Warehouse
 					cat.Name = newCategory.Name;
 				}
 			}
-			//TODO: Edit all products.
 		}
 
 		/// <summary>
@@ -161,7 +168,6 @@ namespace Warehouse
 		/// <param name="e"></param>
 		private void deleteCategoryButton_Click(object sender, EventArgs e)
 		{
-			//TODO: Check if empty
 			if (treeView.SelectedNode != null)
 			{
 				var cat = treeView.SelectedNode.Tag as Category;
@@ -171,12 +177,14 @@ namespace Warehouse
 					CurrentWarehouse.Categories.
 						Remove(CurrentWarehouse.Categories.
 							Find(x => x.Name == treeView.SelectedNode.Text));
-					foreach (var pr in cat.Products) {
+					foreach (var pr in cat.Products)
+					{
 						CurrentWarehouse.Products.Remove(
 							CurrentWarehouse.Products.Find(x => x.Name == pr.Name));
 					}
 				}
-				else {
+				else
+				{
 					var parentCat = treeView.SelectedNode.Parent.Tag as Category;
 					parentCat.SubCategories.
 						Remove(CurrentWarehouse.Categories.
@@ -186,7 +194,7 @@ namespace Warehouse
 						CurrentWarehouse.Products.Remove(
 							CurrentWarehouse.Products.Find(x => x.Name == pr.Name));
 					}
-					
+
 				}
 				dataGridView.Refresh();
 				treeView.SelectedNode.Remove();
@@ -209,7 +217,6 @@ namespace Warehouse
 
 		private void treeView_MouseClick(object sender, MouseEventArgs e)
 		{
-			//TODO: Figure out how to deselect a node!
 			treeView.SelectedNode = null;
 		}
 		#endregion
@@ -245,9 +252,14 @@ namespace Warehouse
 			CurrentWarehouse.ExportJson();
 		}
 
+		/// <summary>
+		/// Edit produst. 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void editProductButton_Click(object sender, EventArgs e)
 		{
-			
+
 			//Check if a product is selected.
 			if (dataGridView.SelectedRows == null)
 			{
@@ -268,18 +280,28 @@ namespace Warehouse
 			}
 		}
 
+		/// <summary>
+		/// Export to CSV.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void exportCSVToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//TODO: Implement settings form.
 			CurrentWarehouse.ExportCSVReport(MinStock);
 		}
 
+		/// <summary>
+		/// Opens up the settings form.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			var settings = new Settings();
 			settings.MinStock = MinStock;
 			settings.ShowDialog();
-			if (settings.DialogResult == DialogResult.OK) {
+			if (settings.DialogResult == DialogResult.OK)
+			{
 				MinStock = settings.MinStock;
 			}
 		}

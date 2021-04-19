@@ -23,7 +23,7 @@ namespace Warehouse
 		}
 
 		/// <summary>
-		/// 
+		/// Adds a new item to the warehouse. Validates input fields before that.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

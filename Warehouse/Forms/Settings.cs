@@ -18,6 +18,11 @@ namespace Warehouse
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Changes the value of MinStock to the selected in the numeric TopDown.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void changeButton_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
