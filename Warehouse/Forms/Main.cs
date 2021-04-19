@@ -17,6 +17,8 @@ namespace Warehouse
 	{
 
 		Warehouse CurrentWarehouse { get; set; }
+		//Might not need it.
+		Category SelectedCategory { get; set; }
 
 		public Main()
 		{
@@ -224,32 +226,24 @@ namespace Warehouse
 
 		private void editProductButton_Click(object sender, EventArgs e)
 		{
-			//Check if a category is selected.
-			/*if (dataGridView.SelectedRows[0]. == null)
+			
+			//Check if a product is selected.
+			if (dataGridView.SelectedRows == null)
 			{
-				string message = "Please select a category first";
+				string message = "Please select a product first";
 				string caption = "Attention!";
 				MessageBox.Show(message, caption, MessageBoxButtons.OK);
 				return;
-			}*/
-
-			AddItem newItemForm = new AddItem();
-			var category = treeView.SelectedNode.Tag as Category;
-			var node = treeView.SelectedNode;
-			while (node != null)
-			{
-				var cat = node.Tag as Category;
-				newItemForm.Category = cat.Name + "/" + newItemForm.Category;
-				node = node.Parent;
 			}
-			newItemForm.Category = newItemForm.Category.Substring(0, newItemForm.Category.Length - 1);
+			var selectedProduct = dataGridView.SelectedRows[0].DataBoundItem as Product;
+			AddItem newItemForm = new AddItem();
+			newItemForm.Product = selectedProduct;
 
 			newItemForm.ShowDialog();
 			if (newItemForm.DialogResult == DialogResult.OK)
 			{
-				category.Products.Add(newItemForm.Product);
-				dataGridView.DataSource = category.Bind();
-				CurrentWarehouse.Products.Add(newItemForm.Product);
+				selectedProduct = newItemForm.Product;
+				dataGridView.Refresh();
 			}
 		}
 

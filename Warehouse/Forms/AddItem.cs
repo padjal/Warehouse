@@ -19,14 +19,7 @@ namespace Warehouse
 		public AddItem()
 		{
 			InitializeComponent();
-			//Populate data for editing
-			if (Product != null) {
-				productName.Text = Product.Name;
-				idMaskedText.Text = Product.Id;
-				productDescription.Text = Product.Description;
-				productPrice.Text = Product.Price.ToString();
-				productInStock.Text = Product.Stock.ToString();
-			}
+
 		}
 
 		/// <summary>
@@ -45,14 +38,26 @@ namespace Warehouse
 			}
 			else
 			{
-				var product = new Product(
-				productName.Text,
-				idMaskedText.Text,
-				productDescription.Text,
-				double.Parse(productPrice.Text),
-				int.Parse(productInStock.Text),
-				Category);
-				Product = product;
+				if (Product != null)
+				{
+					Product.Name = productName.Text;
+					Product.Id = idMaskedText.Text;
+					Product.Description = productDescription.Text;
+					Product.Price = double.Parse(productPrice.Text);
+					Product.Stock = int.Parse(productInStock.Text);
+				}
+				else
+				{
+					var product = new Product(
+						productName.Text,
+						idMaskedText.Text,
+						productDescription.Text,
+						double.Parse(productPrice.Text),
+						int.Parse(productInStock.Text),
+						Category);
+					Product = product;
+				}
+
 				DialogResult = DialogResult.OK;
 				Close();
 
@@ -120,5 +125,18 @@ namespace Warehouse
 			}
 		}
 		#endregion
+
+		private void AddItem_Load(object sender, EventArgs e)
+		{
+			//Populate data for editing
+			if (Product != null)
+			{
+				productName.Text = Product.Name;
+				idMaskedText.Text = Product.Id;
+				productDescription.Text = Product.Description;
+				productPrice.Text = Product.Price.ToString();
+				productInStock.Text = Product.Stock.ToString();
+			}
+		}
 	}
 }

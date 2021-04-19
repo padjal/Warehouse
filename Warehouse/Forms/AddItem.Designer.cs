@@ -226,6 +226,7 @@ namespace Warehouse
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "New item";
+			this.Load += new System.EventHandler(this.AddItem_Load);
 			((System.ComponentModel.ISupportInitialize)(this.productInStock)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.productImage)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
