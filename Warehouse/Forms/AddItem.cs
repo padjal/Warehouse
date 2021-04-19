@@ -19,9 +19,21 @@ namespace Warehouse
 		public AddItem()
 		{
 			InitializeComponent();
+			//Populate data for editing
+			if (Product != null) {
+				productName.Text = Product.Name;
+				idMaskedText.Text = Product.Id;
+				productDescription.Text = Product.Description;
+				productPrice.Text = Product.Price.ToString();
+				productInStock.Text = Product.Stock.ToString();
+			}
 		}
 
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void addProductButton_Click(object sender, EventArgs e)
 		{
 			if (!this.ValidateChildren())
@@ -31,7 +43,8 @@ namespace Warehouse
 				MessageBox.Show(message, caption, MessageBoxButtons.OK);
 				return;
 			}
-			else {
+			else
+			{
 				var product = new Product(
 				productName.Text,
 				idMaskedText.Text,
@@ -55,12 +68,13 @@ namespace Warehouse
 		#region Validating user input
 		private void idMaskedText_Validating(object sender, CancelEventArgs e)
 		{
-			if (idMaskedText.Text == string.Empty) {
+			if (idMaskedText.Text == string.Empty)
+			{
 				errorProvider.SetError(idMaskedText, "This field is required.");
 				e.Cancel = true;
 			}
 		}
-		
+
 		private void productName_Validating(object sender, CancelEventArgs e)
 		{
 			if (productName.Text == string.Empty)
@@ -91,7 +105,7 @@ namespace Warehouse
 				errorProvider.SetError(productPrice, "Price should be a number!");
 				e.Cancel = true;
 			}
-			
+
 		}
 
 		private void productInStock_Validating(object sender, CancelEventArgs e)

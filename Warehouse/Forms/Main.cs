@@ -30,28 +30,30 @@ namespace Warehouse
 			{
 				string message = "Please select a category first";
 				string caption = "Attention!";
-				MessageBox.Show(message,caption, MessageBoxButtons.OK);
+				MessageBox.Show(message, caption, MessageBoxButtons.OK);
 				return;
 			}
-			
+
 			AddItem newItemForm = new AddItem();
 			var category = treeView.SelectedNode.Tag as Category;
 			var node = treeView.SelectedNode;
-			while (node != null) {
+			while (node != null)
+			{
 				var cat = node.Tag as Category;
 				newItemForm.Category = cat.Name + "/" + newItemForm.Category;
 				node = node.Parent;
 			}
-			newItemForm.Category = newItemForm.Category.Substring(0, newItemForm.Category.Length-1);
+			newItemForm.Category = newItemForm.Category.Substring(0, newItemForm.Category.Length - 1);
 
 			newItemForm.ShowDialog();
-			if (newItemForm.DialogResult == DialogResult.OK) {
+			if (newItemForm.DialogResult == DialogResult.OK)
+			{
 				category.Products.Add(newItemForm.Product);
 				dataGridView.DataSource = category.Bind();
 				CurrentWarehouse.Products.Add(newItemForm.Product);
 			}
-			
-				
+
+
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,7 +81,7 @@ namespace Warehouse
 			CurrentWarehouse = new Warehouse();
 			using (var sw = new StreamReader("categories.json"))
 			{
-				CurrentWarehouse.Categories =  JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
+				CurrentWarehouse.Categories = JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
 			}
 			using (var sw = new StreamReader("products.json"))
 			{
@@ -170,10 +172,10 @@ namespace Warehouse
 
 		private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			//TODO: Handle products display change.
-			if (treeView.SelectedNode != null) {
+			if (treeView.SelectedNode != null)
+			{
 				var cat = treeView.SelectedNode.Tag as Category;
-				dataGridView.DataSource = cat?.Bind();
+				dataGridView.DataSource = cat.Bind();
 				dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 			}
 		}
@@ -189,8 +191,10 @@ namespace Warehouse
 		}
 		#endregion
 
-		internal void DrawNodes(List<Category> categories) {
-			foreach (var cat in categories) {
+		internal void DrawNodes(List<Category> categories)
+		{
+			foreach (var cat in categories)
+			{
 				var tn = new TreeNode(cat.Name);
 				tn.Tag = cat;
 				if (cat.SubCategories != null)
@@ -200,7 +204,8 @@ namespace Warehouse
 			}
 		}
 
-		internal void AddChildren(List<Category> categories, TreeNode parent) {
+		internal void AddChildren(List<Category> categories, TreeNode parent)
+		{
 			foreach (var cat in categories)
 			{
 				var tn = new TreeNode(cat.Name);
@@ -216,6 +221,38 @@ namespace Warehouse
 		{
 			CurrentWarehouse.ExportJson();
 		}
+
+		private void editProductButton_Click(object sender, EventArgs e)
+		{
+			//Check if a category is selected.
+			/*if (dataGridView.SelectedRows[0]. == null)
+			{
+				string message = "Please select a category first";
+				string caption = "Attention!";
+				MessageBox.Show(message, caption, MessageBoxButtons.OK);
+				return;
+			}*/
+
+			AddItem newItemForm = new AddItem();
+			var category = treeView.SelectedNode.Tag as Category;
+			var node = treeView.SelectedNode;
+			while (node != null)
+			{
+				var cat = node.Tag as Category;
+				newItemForm.Category = cat.Name + "/" + newItemForm.Category;
+				node = node.Parent;
+			}
+			newItemForm.Category = newItemForm.Category.Substring(0, newItemForm.Category.Length - 1);
+
+			newItemForm.ShowDialog();
+			if (newItemForm.DialogResult == DialogResult.OK)
+			{
+				category.Products.Add(newItemForm.Product);
+				dataGridView.DataSource = category.Bind();
+				CurrentWarehouse.Products.Add(newItemForm.Product);
+			}
+		}
+
 		//End of class
 	}
 }

@@ -34,7 +34,7 @@ namespace Warehouse
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.button4 = new System.Windows.Forms.Button();
+			this.editProductButton = new System.Windows.Forms.Button();
 			this.deleteCategoryButton = new System.Windows.Forms.Button();
 			this.editCategoryButton = new System.Windows.Forms.Button();
 			this.newItemButton = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@ namespace Warehouse
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(115)))));
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.button4);
+			this.panel1.Controls.Add(this.editProductButton);
 			this.panel1.Controls.Add(this.deleteCategoryButton);
 			this.panel1.Controls.Add(this.editCategoryButton);
 			this.panel1.Controls.Add(this.newItemButton);
@@ -112,16 +112,17 @@ namespace Warehouse
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Categories";
 			// 
-			// button4
+			// editProductButton
 			// 
-			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.editProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.button4.Location = new System.Drawing.Point(891, 55);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(90, 36);
-			this.button4.TabIndex = 3;
-			this.button4.Text = "Edit";
-			this.button4.UseVisualStyleBackColor = true;
+			this.editProductButton.Location = new System.Drawing.Point(891, 55);
+			this.editProductButton.Name = "editProductButton";
+			this.editProductButton.Size = new System.Drawing.Size(90, 36);
+			this.editProductButton.TabIndex = 3;
+			this.editProductButton.Text = "Edit";
+			this.editProductButton.UseVisualStyleBackColor = true;
+			this.editProductButton.Click += new System.EventHandler(this.editProductButton_Click);
 			// 
 			// deleteCategoryButton
 			// 
@@ -212,7 +213,7 @@ namespace Warehouse
 			this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.newToolStripMenuItem.Text = "&New";
 			// 
 			// openToolStripMenuItem
@@ -221,13 +222,13 @@ namespace Warehouse
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(212, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -235,14 +236,14 @@ namespace Warehouse
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
 			// 
 			// exportCSVToolStripMenuItem
 			// 
@@ -250,18 +251,18 @@ namespace Warehouse
 			this.exportCSVToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
 			this.exportCSVToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.exportCSVToolStripMenuItem.Text = "&Export CSV";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -442,7 +443,7 @@ namespace Warehouse
 		private System.Windows.Forms.Button deleteCategoryButton;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button editProductButton;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
