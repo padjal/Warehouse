@@ -35,5 +35,10 @@ namespace Warehouse
 
 			return bindsrc;
 		}
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

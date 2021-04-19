@@ -4,13 +4,14 @@ using System.Text.Json;
 
 namespace Warehouse
 {
-	 class Warehouse
+	class Warehouse
 	{
 		List<Category> _categories = new List<Category>();
 		List<Product> _products = new List<Product>();
-		public List<Category> Categories { 
+		public List<Category> Categories
+		{
 			get => _categories;
-			set => _categories = value; 
+			set => _categories = value;
 		}
 		public List<Product> Products
 		{
@@ -18,13 +19,18 @@ namespace Warehouse
 			set => _products = value;
 		}
 
-		public void ExportJson() {
-			using (var sw = new StreamWriter("output.json")) {
-				sw.Write(JsonSerializer.Serialize(this));
+		public void ExportJson()
+		{
+			using (var sw = new StreamWriter("categories.json"))
+			{
+				sw.Write(JsonSerializer.Serialize(_categories));
 			}
-				
+
+			using (var sw = new StreamWriter("products.json"))
+			{
+				sw.Write(JsonSerializer.Serialize(Products));
+			}
 		}
 
-		
 	}
 }

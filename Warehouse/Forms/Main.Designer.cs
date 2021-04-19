@@ -219,13 +219,13 @@ namespace Warehouse
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(212, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -233,14 +233,14 @@ namespace Warehouse
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
 			// 
 			// exportCSVToolStripMenuItem
 			// 
@@ -248,18 +248,18 @@ namespace Warehouse
 			this.exportCSVToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.exportCSVToolStripMenuItem.Name = "exportCSVToolStripMenuItem";
 			this.exportCSVToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.exportCSVToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.exportCSVToolStripMenuItem.Text = "&Export CSV";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -406,6 +406,7 @@ namespace Warehouse
 			this.Name = "Main";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Warehouse";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
 			this.Load += new System.EventHandler(this.Main_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

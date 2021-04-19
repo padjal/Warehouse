@@ -14,9 +14,9 @@ namespace Warehouse
 		public double Price { get; set; }
 		public int Stock { get; set; }
 
-		public Category Category { get; set; }
+		public string Category { get; set; }
 
-		public Product(string name, string id, string description, double price, int stock, Category category) {
+		public Product(string name, string id, string description, double price, int stock, string category) {
 			Name = name;
 			Id = id;
 			Description = description;

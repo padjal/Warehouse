@@ -13,7 +13,7 @@ namespace Warehouse
 {
 	public partial class AddItem : Form
 	{
-		internal Category Category { get; set; }
+		internal string Category { get; set; }
 		internal Product Product { get; set; }
 
 		public AddItem()

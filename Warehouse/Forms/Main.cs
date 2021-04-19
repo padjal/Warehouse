@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Warehouse;
@@ -33,12 +35,19 @@ namespace Warehouse
 			}
 			
 			AddItem newItemForm = new AddItem();
-			var cat = treeView.SelectedNode.Tag as Category;
-			newItemForm.Category = cat;
+			var category = treeView.SelectedNode.Tag as Category;
+			var node = treeView.SelectedNode;
+			while (node != null) {
+				var cat = node.Tag as Category;
+				newItemForm.Category = cat.Name + "/" + newItemForm.Category;
+				node = node.Parent;
+			}
+			newItemForm.Category = newItemForm.Category.Substring(0, newItemForm.Category.Length-1);
+
 			newItemForm.ShowDialog();
 			if (newItemForm.DialogResult == DialogResult.OK) {
-				cat.Products.Add(newItemForm.Product);
-				dataGridView.DataSource = cat.Bind();
+				category.Products.Add(newItemForm.Product);
+				dataGridView.DataSource = category.Bind();
 				CurrentWarehouse.Products.Add(newItemForm.Product);
 			}
 			
@@ -47,12 +56,12 @@ namespace Warehouse
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//TODO: Save warehouse
+			CurrentWarehouse.ExportJson();
 		}
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//TODO: SAVE!
+			CurrentWarehouse.ExportJson();
 			this.Close();
 		}
 
@@ -64,9 +73,18 @@ namespace Warehouse
 
 		private void Main_Load(object sender, EventArgs e)
 		{
+			//TODO: Check if file exist!
 			CurrentWarehouse = new Warehouse();
-			//Check for previous save; if not
-			//InitializeTreeView();
+			using (var sw = new StreamReader("categories.json"))
+			{
+				CurrentWarehouse.Categories =  JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
+			}
+			using (var sw = new StreamReader("products.json"))
+			{
+				CurrentWarehouse.Products = JsonSerializer.Deserialize<List<Product>>(sw.ReadToEnd());
+			}
+			if (CurrentWarehouse.Categories != null)
+				DrawNodes(CurrentWarehouse.Categories);
 		}
 
 		#region Manage Categories
@@ -113,13 +131,13 @@ namespace Warehouse
 		{
 			if (treeView.SelectedNode != null)
 			{
+				var cat = treeView.SelectedNode.Tag as Category;
 				AddCategory newCategory = new AddCategory();
 				newCategory.Name = treeView.SelectedNode.Text;
 				newCategory.ShowDialog();
 				if (newCategory.DialogResult == DialogResult.OK)
 				{
 					treeView.SelectedNode.Text = newCategory.Name;
-					var cat = treeView.SelectedNode.Tag as Category;
 					cat.Name = newCategory.Name;
 				}
 			}
@@ -153,7 +171,8 @@ namespace Warehouse
 			//TODO: Handle products display change.
 			if (treeView.SelectedNode != null) {
 				var cat = treeView.SelectedNode.Tag as Category;
-				dataGridView.DataSource = cat.Bind();
+				dataGridView.DataSource = cat?.Bind();
+				dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 			}
 		}
 
@@ -168,6 +187,33 @@ namespace Warehouse
 		}
 		#endregion
 
+		internal void DrawNodes(List<Category> categories) {
+			foreach (var cat in categories) {
+				var tn = new TreeNode(cat.Name);
+				tn.Tag = cat;
+				if (cat.SubCategories != null)
+					AddChildren(cat.SubCategories, tn);
+
+				treeView.Nodes.Add(tn);
+			}
+		}
+
+		internal void AddChildren(List<Category> categories, TreeNode parent) {
+			foreach (var cat in categories)
+			{
+				var tn = new TreeNode(cat.Name);
+				tn.Tag = cat;
+				if (cat.SubCategories != null)
+					AddChildren(cat.SubCategories, tn);
+
+				parent.Nodes.Add(tn);
+			}
+		}
+
+		private void Main_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			CurrentWarehouse.ExportJson();
+		}
 		//End of class
 	}
 }
