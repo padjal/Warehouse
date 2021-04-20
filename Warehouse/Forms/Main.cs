@@ -93,16 +93,19 @@ namespace Warehouse
 		private void Main_Load(object sender, EventArgs e)
 		{
 			CurrentWarehouse = new Warehouse();
-			using (var sw = new StreamReader("categories.json"))
-			{
-				CurrentWarehouse.Categories = JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
+			if(File.Exists("categories.json")&& File.Exists("products.json")) {
+				using (var sw = new StreamReader("categories.json"))
+				{
+					CurrentWarehouse.Categories = JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
+				}
+				using (var sw = new StreamReader("products.json"))
+				{
+					CurrentWarehouse.Products = JsonSerializer.Deserialize<List<Product>>(sw.ReadToEnd());
+				}
+				if (CurrentWarehouse.Categories != null)
+					DrawNodes(CurrentWarehouse.Categories);
 			}
-			using (var sw = new StreamReader("products.json"))
-			{
-				CurrentWarehouse.Products = JsonSerializer.Deserialize<List<Product>>(sw.ReadToEnd());
-			}
-			if (CurrentWarehouse.Categories != null)
-				DrawNodes(CurrentWarehouse.Categories);
+			
 		}
 
 		#region Manage Categories
