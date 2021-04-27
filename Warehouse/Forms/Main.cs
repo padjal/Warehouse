@@ -15,14 +15,9 @@ namespace Warehouse
 {
 	public partial class Main : Form
 	{
-		int _minStock = 10;
 		Warehouse CurrentWarehouse { get; set; }
-		public int MinStock
-		{
-			get => _minStock;
-			set => _minStock = value;
-		}
-	
+		public int MinStock { get; set; } = 10;
+
 
 		public Main()
 		{
