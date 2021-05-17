@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Warehouse;
 
-namespace Warehouse
+namespace Warehouse.Forms
 {
 	public partial class Main : Form
 	{
 		Warehouse CurrentWarehouse { get; set; }
 		public int MinStock { get; set; } = 10;
+		public TreeNode previouslySelectedNode;
 
 
 		public Main()
@@ -63,7 +58,7 @@ namespace Warehouse
 		}
 
 		/// <summary>
-		/// Save progres. Json serialization is used.
+		/// Save progress. Json serialization is used.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -88,7 +83,9 @@ namespace Warehouse
 		private void Main_Load(object sender, EventArgs e)
 		{
 			CurrentWarehouse = new Warehouse();
-			if(File.Exists("categories.json")&& File.Exists("products.json")) {
+			Directory.SetCurrentDirectory("../../State");
+			if (File.Exists("categories.json") && File.Exists("products.json"))
+			{
 				using (var sw = new StreamReader("categories.json"))
 				{
 					CurrentWarehouse.Categories = JsonSerializer.Deserialize<List<Category>>(sw.ReadToEnd());
@@ -100,7 +97,7 @@ namespace Warehouse
 				if (CurrentWarehouse.Categories != null)
 					DrawNodes(CurrentWarehouse.Categories);
 			}
-			
+
 		}
 
 		#region Manage Categories
@@ -119,7 +116,7 @@ namespace Warehouse
 				var newNode = new TreeNode(newCategory.Name);
 				newNode.Tag = cat;
 
-				//Check if category exist
+				//TODO:Check if category exist
 
 				//If this is a top-level category
 				if (treeView.SelectedNode == null)
@@ -201,12 +198,12 @@ namespace Warehouse
 
 		private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			if (treeView.SelectedNode != null)
-			{
-				var cat = treeView.SelectedNode.Tag as Category;
-				dataGridView.DataSource = cat.Bind();
-				dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-			}
+			var cat = treeView.SelectedNode.Tag as Category;
+			dataGridView.DataSource = cat.Bind();
+			dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+			deleteCategoryButton.Enabled = true;
+			editCategoryButton.Enabled = true;
+
 		}
 
 		private void treeView_Click(object sender, EventArgs e)
@@ -259,7 +256,7 @@ namespace Warehouse
 		{
 
 			//Check if a product is selected.
-			if (dataGridView.SelectedRows == null)
+			if (dataGridView.SelectedRows.Count == 0)
 			{
 				string message = "Please select a product first";
 				string caption = "Attention!";
@@ -303,6 +300,8 @@ namespace Warehouse
 				MinStock = settings.MinStock;
 			}
 		}
+
+
 
 		//End of class
 	}

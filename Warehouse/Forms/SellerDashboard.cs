@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Warehouse.Forms
 {
-	public partial class LoginForm : Form
+	public partial class SellerDashboard : Form
 	{
-		public LoginForm()
+		public SellerDashboard()
 		{
 			InitializeComponent();
-		}
-
-		private void usernameTextBox_TextChanged(object sender, EventArgs e)
-		{
-
 		}
 	}
 }
