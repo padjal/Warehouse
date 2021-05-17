@@ -293,7 +293,7 @@ namespace Warehouse
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+		private void optionsMenuItem_Click(object sender, EventArgs e)
 		{
 			var settings = new Settings();
 			settings.MinStock = MinStock;
